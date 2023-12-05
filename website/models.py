@@ -1,13 +1,13 @@
-Create our database models for users & notes
+#Create our database models for users & notes
 from . import db
 from flask_login import UserMixin
 from sqlalchemy.sql import func
+from datetime import datetime
 
 class Note(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     data = db.Column(db.String(10000))
     #To show datetime
-    date = db.Column(db.DateTime(timezone=True), default=func.now())
     #shows the relationship with the other model i.e class, user and primary key, id
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 
