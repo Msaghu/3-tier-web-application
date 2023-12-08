@@ -1,0 +1,24 @@
+# Image of workspace. Learn more: https://www.gitpod.io/docs/configure/workspaces/workspace-image
+image: gitpod/workspace-full:latest
+
+# List the start up tasks. Learn more: https://www.gitpod.io/docs/configure/workspaces/tasks
+tasks:
+  - name: aws-cli
+    before: |
+      cd $PROJECT_ROOT
+      source ./bin/install_aws_cli
+      #env:
+      #  AWS_CLI_AUTO_PROMPT: on-partial
+      
+  - name: python
+    before: |
+      cd $PROJECT_ROOT &&
+      source ./bin/install_python
+    command: python main.py
+
+vscode:
+  extensions:
+    - amazonwebservices.aws-toolkit-vscode
+
+
+# Learn more from ready-to-use templates: https://www.gitpod.io/docs/introduction/getting-started/quickstart
